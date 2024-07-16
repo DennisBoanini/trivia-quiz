@@ -2,23 +2,25 @@ import { QuestionAndAnswers } from "../models/Question.ts";
 import Answer from "./Answer.tsx";
 import { useAppStore } from "../store.ts";
 import { useNavigate } from "react-router-dom";
+import { Title } from "./Title.tsx";
+import { Button } from "./form/Button.tsx";
 
 type Props = {
     questions: QuestionAndAnswers[]
     showResults: boolean
 }
 export default function Questions(props: Props) {
-    const {updateAnswers, answers, questions} = useAppStore()
+    const {updateAnswers, userAnswers, questions} = useAppStore()
     const navigate = useNavigate()
 
     return (
         <div style={{display: "flex", flexDirection: "column", gap: "15px"}}>
             {questions.map((question, index) => (
                 <div key={index}>
-                    <h2 dangerouslySetInnerHTML={{__html: question.question}}/>
+                    <Title level={3} text={question.question}/>
                     <div style={{display: "flex", flexDirection: "row", gap: "10px"}}>
                         {question.answers.map((answer, answerIndex) => {
-                            const isSelected = answers.get(question.question)?.text === answer.text;
+                            const isSelected = userAnswers.get(question.question)?.text === answer.text;
                             let backgroundColor = ''
                             if (!props.showResults) {
                                 backgroundColor = isSelected ? "lightblue" : "white"
@@ -41,8 +43,8 @@ export default function Questions(props: Props) {
                 </div>
             ))}
 
-            {answers && answers.size > 0 && answers.size === props.questions.length && !props.showResults && (
-                <button onClick={() => navigate('./results')}>Submit</button>
+            {userAnswers && userAnswers.size > 0 && userAnswers.size === props.questions.length && !props.showResults && (
+                <Button id={'submitAnswersBtn'} onClick={() => navigate('/trivia-quiz/results/')}>Submit</Button>
             )}
         </div>
     )

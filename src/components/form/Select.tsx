@@ -1,5 +1,5 @@
 import { SelectHTMLAttributes } from "react";
-import { Option } from "../models/Option.ts";
+import { Option } from "../../models/Option.ts";
 
 type Props = SelectHTMLAttributes<HTMLSelectElement> & {
     id: string

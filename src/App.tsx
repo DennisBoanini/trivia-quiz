@@ -1,8 +1,10 @@
 import { FormEvent, useEffect } from "react";
-import Select from "./components/Select.tsx";
+import Select from "./components/form/Select.tsx";
 import { difficultyOptions } from "./utils.ts";
 import Questions from "./components/Questions.tsx";
 import { useAppStore } from "./store.ts";
+import { Button } from "./components/form/Button.tsx";
+import { Title } from "./components/Title.tsx";
 
 function App() {
     const {
@@ -47,7 +49,7 @@ function App() {
             {loadingCategories && <p>Loading...</p>}
             {!loadingCategories &&
                 <div style={{display: "flex", alignItems: "center", justifyItems: "center", flexDirection: "column"}}>
-                    <h2>QUIZ MAKER</h2>
+                    <Title level={1} text={'QUIZ MAKER'}/>
                     <form style={{display: 'flex', gap: '5px', alignItems: "end"}} onSubmit={onSubmitHandler}>
                         <Select
                             id="categorySelect"
@@ -68,9 +70,7 @@ function App() {
                             onChange={(e) => setDifficultySelected(e.target.value)}
                         />
 
-                        <button id="createBtn" type="submit">
-                            Create
-                        </button>
+                        <Button id={'createBtn'} type={'submit'}>Create quiz</Button>
                     </form>
 
                     {loadingQuestions && categoryIdSelected && difficultySelected && <p>Loading...</p>}

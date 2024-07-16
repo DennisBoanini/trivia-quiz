@@ -15,7 +15,7 @@ type Actions = {
 type State = {
     categories: Category[];
     questions: QuestionAndAnswers[];
-    answers: Map<string, AnswerModel>;
+    userAnswers: Map<string, AnswerModel>;
     loadingCategories: boolean;
     loadingQuestions: boolean;
     categoryIdSelected: string;
@@ -25,7 +25,7 @@ type State = {
 const initialState: State = {
     categories: [],
     questions: [],
-    answers: new Map(),
+    userAnswers: new Map(),
     loadingCategories: false,
     loadingQuestions: false,
     categoryIdSelected: '',
@@ -65,9 +65,9 @@ export const useAppStore = create<State & Actions>()((set, get) => ( {
     },
     updateAnswers: ({answer, question}: { answer: AnswerModel, question: string }) => {
         set((state) => {
-            const updatedAnswers = new Map(state.answers);
+            const updatedAnswers = new Map(state.userAnswers);
             updatedAnswers.set(question, answer);
-            return {answers: updatedAnswers};
+            return {userAnswers: updatedAnswers};
         });
     },
     reset: () => {

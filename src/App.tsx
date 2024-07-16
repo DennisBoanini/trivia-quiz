@@ -47,7 +47,7 @@ function App() {
             {loadingCategories && <p>Loading...</p>}
             {!loadingCategories &&
                 <div style={{display: "flex", alignItems: "center", justifyItems: "center", flexDirection: "column"}}>
-                    <h2>QUIZ</h2>
+                    <h2>QUIZ MAKER</h2>
                     <form style={{display: 'flex', gap: '5px', alignItems: "end"}} onSubmit={onSubmitHandler}>
                         <Select
                             id="categorySelect"

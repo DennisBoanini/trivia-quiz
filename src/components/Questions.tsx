@@ -42,7 +42,7 @@ export default function Questions(props: Props) {
             ))}
 
             {answers && answers.size > 0 && answers.size === props.questions.length && !props.showResults && (
-                <button onClick={() => navigate('/results')}>Submit</button>
+                <button onClick={() => navigate('./results')}>Submit</button>
             )}
         </div>
     )

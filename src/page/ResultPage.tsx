@@ -10,7 +10,7 @@ export default function ResultPage() {
 
     useEffect(() => {
         if (answers.size === 0) {
-            navigate('/', {replace: true});
+            navigate('/trivia-quiz/', {replace: true});
         }
 
         const score = Array.from(answers.values()).reduce((acc, answer) => acc += answer.isCorrect ? 1 : 0, 0);
@@ -31,7 +31,7 @@ export default function ResultPage() {
 
     function createNewQuiz() {
         reset();
-        navigate('/', {replace: true});
+        navigate('/trivia-quiz/', {replace: true});
     }
 
     return (

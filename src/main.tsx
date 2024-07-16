@@ -7,11 +7,11 @@ import ResultPage from "./page/ResultPage.tsx";
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/trivia-quiz/",
         element: <App/>,
     },
     {
-        path: "/results",
+        path: "/trivia-quiz/results/",
         element: <ResultPage/>
     }
 ]);

@@ -1,0 +1,4 @@
+.answer:hover {
+    cursor: pointer;
+    background: lightblue !important;
+}
